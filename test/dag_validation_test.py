@@ -16,13 +16,6 @@ class TestDagIntegrity(unittest.TestCase):
             )
         )
 
-    def test_alert_email_present(self):
-
-        for dag_id, dag in self.dagbag.dags.iteritems():
-            emails = dag.default_args.get('email', [])
-            msg = 'Alert email not set for DAG {id}'.format(id=dag_id)
-            self.assertIn('alert.email@gmail.com', emails, msg)
-
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestDagIntegrity)
 unittest.TextTestRunner(verbosity=2).run(suite)
