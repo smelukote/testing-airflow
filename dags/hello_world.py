@@ -8,7 +8,7 @@ default_args = {
     'start_date': dt.datetime(2021, 9, 4)
 }
 
-with DAG('airflow_tutorial_v01', default_args) as dag:
+with DAG('airflow_tutorial_v01', default_args=default_args) as dag:
     print_hello = BashOperator(task_id='print_hello',
         bash_command='echo hello')
     print_world = BashOperator(task_id='print_world',
