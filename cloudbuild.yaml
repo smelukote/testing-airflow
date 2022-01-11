@@ -6,9 +6,9 @@ steps:
   args:
   - -c
   - 'pip install pytest && pip install -r requirements.txt && pytest test/*_test.py'
-- name: gcr.io/google.com/cloudsdktool/cloud-sdk
-  id: Deploy
-  entrypoint: bash
-  args: [ '-c', 'if [ "$BRANCH_NAME" == "develop" ]; then echo "$BRANCH_NAME" && gsutil -m rsync  -r ./dags gs://${_COMPOSER_BUCKET}/dags; else echo "Working on $BRANCH_NAME"; fi']
-substitutions:
-    _COMPOSER_BUCKET: us-central1-airflow-2-42bc74f0-bucket
+# - name: gcr.io/google.com/cloudsdktool/cloud-sdk
+#   id: Deploy
+#   entrypoint: bash
+#   args: [ '-c', 'if [ "$BRANCH_NAME" == "develop" ]; then echo "$BRANCH_NAME" && gsutil -m rsync  -r ./dags gs://${_COMPOSER_BUCKET}/dags; else echo "Working on $BRANCH_NAME"; fi']
+# substitutions:
+#     _COMPOSER_BUCKET: us-central1-airflow-2-42bc74f0-bucket
